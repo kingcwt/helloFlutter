@@ -1,4 +1,4 @@
-# helloFlutter
+# flutterDemo1
 
 - 启动模拟器
 
@@ -25,6 +25,3 @@
 - 在flutter中自定义组件就是一个类，这个类需要继承StatelessWidget/StatefullWidget  
   - StatelessWidget:无状态组件
   - StatefullWidget:有状态组件
-  
-
-  
