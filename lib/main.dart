@@ -14,20 +14,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int countNum = 0;
+  List<Widget> list = [];
   onPressed() {
     setState(() {
-      countNum++;
+      list.add(ListTile(title: Text('我是列表${list.length + 1}')));
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(list);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Material App Bar'),
       ),
-      body: MyBody(countNum, onPressed),
+      body: MyBody(list),
       floatingActionButton: FloatingActionButton(
         onPressed: onPressed,
         child: const Icon(Icons.add),
@@ -37,9 +38,8 @@ class _HomePageState extends State<HomePage> {
 }
 
 class MyBody extends StatefulWidget {
-  final int countNum;
-  final VoidCallback onPressed;
-  const MyBody(this.countNum, this.onPressed, {super.key});
+  final List<Widget> list;
+  const MyBody(this.list, {super.key});
 
   @override
   State<MyBody> createState() => _MyBodyState();
@@ -48,45 +48,10 @@ class MyBody extends StatefulWidget {
 class _MyBodyState extends State<MyBody> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Column(children: [
-          Text('${widget.countNum}',
-              style: const TextStyle(
-                fontSize: 28,
-              )),
-          const SizedBox(height: 100),
-          ElevatedButton(onPressed: widget.onPressed, child: const Text('add'))
-        ])
-      ],
-    ));
+    print('12312321---${widget.list}');
+
+    return ListView(
+      children: widget.list.toList(),
+    );
   }
 }
-// class MyBody extends StatelessWidget {
-//   int countNum = 0;
-//   MyBody({Key? key}) : super(key: key);
-//   @override
-//   Widget build(BuildContext context) {
-//     return (Center(
-//         child: Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: [
-//         Column(children: [
-//           Text('$countNum',
-//               style: const TextStyle(
-//                 fontSize: 28,
-//               )),
-//           const SizedBox(height: 100),
-//           ElevatedButton(
-//               onPressed: () {
-//                 countNum++;
-//                 print(countNum);
-//               },
-//               child: const Text('add'))
-//         ])
-//       ],
-//     )));
-//   }
-// }
