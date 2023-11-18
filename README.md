@@ -16,6 +16,13 @@ xcrun simctl shutdown all
 ```dart
 flutter run
 ```
+- 查看所有设备  
+
+```dart
+flutter devices
+
+flutter run -d 设备名称
+```
 
 - 常用的快捷键
 
