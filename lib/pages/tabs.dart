@@ -3,6 +3,7 @@ import './tabs/home.dart';
 import './tabs/category.dart';
 import './tabs/person.dart';
 import './tabs/settings.dart';
+import './tabs/message.dart';
 
 class Tabs extends StatefulWidget {
   const Tabs({super.key});
@@ -16,6 +17,7 @@ class _TabsState extends State<Tabs> {
   final List<Widget> list = const [
     HomePage(),
     CategoryPage(),
+    MessagePage(),
     SettingsPage(),
     PersonPage()
   ];
@@ -29,8 +31,11 @@ class _TabsState extends State<Tabs> {
           // unselectedItemColor: Colors.grey,
           // selectedItemColor: Colors.blue,
           // backgroundColor: Colors.amber,
-          type: BottomNavigationBarType.fixed, // 这个必须设置 不然颜色和图标默认显示白色
-          currentIndex: _currentIndex,
+          type: BottomNavigationBarType
+              .fixed, // 这个必须设置 不然颜色和图标默认显示白色 3个菜单以上需要配置type
+          // iconSize: 35, // 底部菜单大小
+          // fixedColor: Colors.blue, // 选中的颜色
+          currentIndex: _currentIndex, // 第几个菜单选中
           onTap: (int index) {
             setState(() {
               _currentIndex = index;
@@ -48,6 +53,10 @@ class _TabsState extends State<Tabs> {
               label: 'Category',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.message),
+              label: 'Message',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: 'Settings',
             ),
@@ -56,6 +65,27 @@ class _TabsState extends State<Tabs> {
               label: 'Person',
             )
           ]),
+      floatingActionButton: Container(
+        height: 60,
+        width: 60,
+        margin: const EdgeInsets.only(top: 8),
+        padding: const EdgeInsets.all(3),
+        decoration: BoxDecoration(
+          color: Colors.white70,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: FloatingActionButton(
+          onPressed: () => {
+            setState(() {
+              _currentIndex = 2;
+            })
+          },
+          backgroundColor: _currentIndex == 2 ? Colors.purple : Colors.grey,
+          child: const Icon(Icons.add),
+        ),
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.centerDocked, // 浮动按钮位置
     );
   }
 }
