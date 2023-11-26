@@ -99,9 +99,9 @@ class _TabsState extends State<Tabs> {
           Divider(),
         ],
       )),
-      endDrawer: const Drawer(
-        child: Text('右侧菜单栏'),
-      ),
+      // endDrawer: const Drawer(
+      //   child: Text('右侧菜单栏'),
+      // ),
       bottomNavigationBar: BottomNavigationBar(
           // unselectedItemColor: Colors.grey,
           // selectedItemColor: Colors.blue,
