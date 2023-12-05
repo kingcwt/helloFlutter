@@ -25,7 +25,9 @@ class _CategoryPageState extends State<CategoryPage> {
         ElevatedButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return const FormPage();
+                return const FormPage(
+                  arguments: {'title': '我是命名传值的title-yyyy'},
+                );
               }));
             },
             child: const Text('表单')),

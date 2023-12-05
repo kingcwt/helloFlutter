@@ -10,8 +10,19 @@ class PersonPage extends StatefulWidget {
 class _PersonPageState extends State<PersonPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('个人中心'),
+    return Center(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/login');
+            },
+            child: const Text('登录')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/registerFirst');
+            },
+            child: const Text('注册')),
+      ]),
     );
   }
 }
