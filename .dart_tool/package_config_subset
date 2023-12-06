@@ -30,6 +30,10 @@ flutter_lints
 2.19
 file:///Users/cuihongran/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/
 file:///Users/cuihongran/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/lib/
+fluttertoast
+2.12
+file:///Users/cuihongran/.pub-cache/hosted/pub.dev/fluttertoast-8.2.4/
+file:///Users/cuihongran/.pub-cache/hosted/pub.dev/fluttertoast-8.2.4/lib/
 lints
 3.0
 file:///Users/cuihongran/.pub-cache/hosted/pub.dev/lints-2.1.1/
@@ -98,4 +102,8 @@ flutter_test
 3.0
 file:///Users/cuihongran/flutter/packages/flutter_test/
 file:///Users/cuihongran/flutter/packages/flutter_test/lib/
+flutter_web_plugins
+3.0
+file:///Users/cuihongran/flutter/packages/flutter_web_plugins/
+file:///Users/cuihongran/flutter/packages/flutter_web_plugins/lib/
 2

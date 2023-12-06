@@ -15,7 +15,7 @@ class _RegisterFirstPageState extends State<RegisterFirstPage> {
           title: const Text('注册页面first'),
         ),
         body: Center(
-          child: Column(children: [
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Text('注册第一步'),
             ElevatedButton(
                 onPressed: () {

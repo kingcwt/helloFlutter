@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter2/pages/dialog.dart';
 import 'package:flutter2/pages/login.dart';
 import 'package:flutter2/pages/registerFirst.dart';
 import 'package:flutter2/pages/registerSecond.dart';
@@ -7,6 +8,9 @@ import '../pages/tabs.dart';
 import '../pages/form.dart';
 import '../pages/news.dart';
 import '../pages/search.dart';
+
+//MaterialPageRoute => CupertinoPageRoute 可以统一在安卓设备使用ios左右滑动的效果
+// import 'package:flutter/cupertino.dart';
 
 // 1 配置路由
 final Map routes = {
@@ -17,7 +21,8 @@ final Map routes = {
   '/login': (context) => const LoginPage(),
   '/registerFirst': (context) => const RegisterFirstPage(),
   '/registerSecond': (context) => const RegisterSecoundPage(),
-  '/registerThird': (context) => const RegisterThirdPage()
+  '/registerThird': (context) => const RegisterThirdPage(),
+  '/dialog': (context) => const DiaLogPage(),
 };
 
 // 2 配置onGenerateRoute 固定写法 这个方法相当于中间件

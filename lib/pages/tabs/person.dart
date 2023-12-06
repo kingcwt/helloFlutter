@@ -22,6 +22,11 @@ class _PersonPageState extends State<PersonPage> {
               Navigator.pushNamed(context, '/registerFirst');
             },
             child: const Text('注册')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/dialog');
+            },
+            child: const Text('go to DialogPage')),
       ]),
     );
   }
