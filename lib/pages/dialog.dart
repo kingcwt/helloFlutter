@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter2/pages/widget/mydialog.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class DiaLogPage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _DiaLogPageState extends State<DiaLogPage> {
         barrierDismissible: true, // 默认为true 就是可以点击空白处关闭 false 点击空白处不能关闭
         context: context,
         builder: (context) {
-          return SimpleDialog(title: Text('请选择语言'), children: [
+          return SimpleDialog(title: const Text('请选择语言'), children: [
             SimpleDialogOption(
               onPressed: () {
                 print('点击了中文');
@@ -122,6 +123,23 @@ class _DiaLogPageState extends State<DiaLogPage> {
         fontSize: 16.0);
   }
 
+  void _customDialog() async {
+    var res = await showDialog(
+        barrierDismissible: false, // 默认true 点击空白处关闭。 false 不关闭
+        context: context,
+        builder: (context) {
+          return MyDialog(
+              title: '我是自定义标题',
+              content: '我是自定义内容区域的文字',
+              onTab: () {
+                print('close');
+                Navigator.of(context).pop('result==========content');
+              });
+        });
+
+    print('res = $res');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,7 +160,9 @@ class _DiaLogPageState extends State<DiaLogPage> {
               onPressed: _modelBottomSheet,
               child: const Text('modelBottomSheet click')),
           ElevatedButton(
-              onPressed: _toastDialog, child: const Text('flutterToast click'))
+              onPressed: _toastDialog, child: const Text('flutterToast click')),
+          ElevatedButton(
+              onPressed: _customDialog, child: const Text('自定义dialog'))
         ],
       )),
     );

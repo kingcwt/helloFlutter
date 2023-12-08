@@ -27,6 +27,11 @@ class _PersonPageState extends State<PersonPage> {
               Navigator.pushNamed(context, '/dialog');
             },
             child: const Text('go to DialogPage')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/dialog');
+            },
+            child: const Text('自定义dialog')),
       ]),
     );
   }
