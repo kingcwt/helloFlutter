@@ -32,6 +32,26 @@ class _PersonPageState extends State<PersonPage> {
               Navigator.pushNamed(context, '/dialog');
             },
             child: const Text('自定义dialog')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/pageview');
+            },
+            child: const Text('PageView演示')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/pageviewbuilder');
+            },
+            child: const Text('PageViewBuilder演示')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/pageviewfullpage');
+            },
+            child: const Text('pageviewfullpage')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/pageviewswiper');
+            },
+            child: const Text('pageviewswiper')),
       ]),
     );
   }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter2/pages/dialog.dart';
 import 'package:flutter2/pages/login.dart';
+import 'package:flutter2/pages/pageViewBuilder.dart';
+import 'package:flutter2/pages/pageViewFullPage.dart';
+import 'package:flutter2/pages/pageViewSwiper.dart';
+import 'package:flutter2/pages/pageview.dart';
 import 'package:flutter2/pages/registerFirst.dart';
 import 'package:flutter2/pages/registerSecond.dart';
 import 'package:flutter2/pages/registerThird.dart';
@@ -23,6 +27,10 @@ final Map routes = {
   '/registerSecond': (context) => const RegisterSecoundPage(),
   '/registerThird': (context) => const RegisterThirdPage(),
   '/dialog': (context) => const DiaLogPage(),
+  '/pageview': (context) => const MyPageView(),
+  '/pageviewbuilder': (context) => const PageViewBuilder(),
+  '/pageviewfullpage': (context) => const PageViewFullPage(),
+  '/pageviewswiper': (context) => const PageViewSwiper()
 };
 
 // 2 配置onGenerateRoute 固定写法 这个方法相当于中间件
