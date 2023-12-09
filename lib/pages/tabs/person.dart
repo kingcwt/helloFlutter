@@ -52,6 +52,11 @@ class _PersonPageState extends State<PersonPage> {
               Navigator.pushNamed(context, '/pageviewswiper');
             },
             child: const Text('pageviewswiper')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/pageviewkeepalive');
+            },
+            child: const Text('pageviewkeepalive')),
       ]),
     );
   }
