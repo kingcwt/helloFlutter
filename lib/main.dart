@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Demo1'),
+          title: const Text('Flutter Demo12'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -62,20 +62,66 @@ class _MyHomePageState extends State<MyHomePage>
           child: const Icon(Icons.add),
         ),
         body: Center(
-          child: Stack(
-            children: [
-              ScaleTransition(
-                scale: _controller.drive(Tween(begin: 0.0, end: 1.0)
-                    .chain(CurveTween(curve: const Interval(0.5, 1.0)))),
-                child: const Icon(Icons.close, size: 40),
-              ),
-              ScaleTransition(
-                scale: _controller.drive(Tween(begin: 1.0, end: 0.0)
-                    .chain(CurveTween(curve: const Interval(0.0, 0.5)))),
-                child: const Icon(Icons.search, size: 40),
-              )
-            ],
-          ),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SlideTransition(
+                position: _controller.drive(Tween(
+                        begin: const Offset(0.0, 0.0),
+                        end: const Offset(1.0, 0.0))
+                    .chain(CurveTween(curve: const Interval(0.0, 0.2)))),
+                child: Container(
+                  width: 120,
+                  height: 60,
+                  color: Colors.blue[300],
+                )),
+            SlideTransition(
+                position: _controller.drive(Tween(
+                        begin: const Offset(0.0, 0.0),
+                        end: const Offset(1.0, 0.0))
+                    .chain(CurveTween(curve: const Interval(0.2, 0.4)))),
+                child: Container(
+                  width: 120,
+                  height: 60,
+                  color: Colors.blue[500],
+                )),
+            SlidingBox(
+              color: Colors.blue[700],
+              controller: _controller,
+              curve: const Interval(0.6, 0.8),
+            ),
+            SlidingBox(
+              color: Colors.blue[900],
+              controller: _controller,
+              curve: const Interval(0.6, 0.8),
+            ),
+          ]),
+        ));
+  }
+}
+
+class SlidingBox extends StatefulWidget {
+  final AnimationController controller;
+  final Color? color;
+  final Curve curve;
+  const SlidingBox(
+      {super.key,
+      required this.controller,
+      required this.color,
+      required this.curve});
+  @override
+  State<SlidingBox> createState() => _SlidingBoxState();
+}
+
+class _SlidingBoxState extends State<SlidingBox> {
+  @override
+  Widget build(BuildContext context) {
+    return SlideTransition(
+        position: widget.controller.drive(
+            Tween(begin: const Offset(0.0, 0.0), end: const Offset(1.0, 0.0))
+                .chain(CurveTween(curve: widget.curve))),
+        child: Container(
+          width: 120,
+          height: 60,
+          color: widget.color,
         ));
   }
 }
