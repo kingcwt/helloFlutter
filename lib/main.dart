@@ -48,16 +48,29 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           child: const Icon(Icons.add),
         ),
-        body: Center(
-          child: AnimatedOpacity(
-              opacity: flag ? 1.0 : 0.2,
-              // curve: Curves.bounceIn,
-              duration: const Duration(seconds: 1),
+        body: Stack(children: [
+          ListView(
+            children: const [
+              ListTile(
+                title: Text('第一天'),
+              ),
+              ListTile(
+                title: Text('第2天'),
+              ),
+              ListTile(
+                title: Text('第3天'),
+              )
+            ],
+          ),
+          AnimatedPositioned(
+              top: flag ? 10 : 500,
+              right: flag ? 10 : 300,
+              duration: const Duration(seconds: 1, milliseconds: 500),
               child: Container(
-                width: 100,
-                height: 100,
-                color: flag ? Colors.red : Colors.yellow,
+                color: Colors.blue,
+                width: 60,
+                height: 60,
               )),
-        ));
+        ]));
   }
 }
