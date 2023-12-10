@@ -50,34 +50,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).orientation);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
+          child: const Icon(Icons.refresh),
           onPressed: () {
-            var boxState = _globalKey1.currentState as _BoxState;
-            // 获取子widget的状态属性
-            print(boxState._count);
             setState(() {
-              boxState._count++;
+              list.shuffle(); // 对list进行排序 打乱元素顺序
             });
-            // 获取子widget状态的方法
-            boxState.run();
-
-            // 获取子widget (了解)
-            var boxWidget = _globalKey1.currentWidget as Box;
-            print(boxWidget.color);
-
-            // 获取子组件渲染的属性 (了解)
-            var renderBox =
-                _globalKey1.currentContext!.findRenderObject() as RenderBox;
-            print(renderBox.size);
           },
         ),
         appBar: AppBar(
           title: const Text('Flutter Demo Home Page'),
         ),
         body: Center(
-          child: Box(key: _globalKey1, color: Colors.red),
+          child: MediaQuery.of(context).orientation == Orientation.portrait
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: list,
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: list,
+                ),
         ));
   }
 }
@@ -92,10 +87,6 @@ class Box extends StatefulWidget {
 
 class _BoxState extends State<Box> {
   int _count = 0;
-  void run() {
-    print('我是boxstate的run方法');
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
