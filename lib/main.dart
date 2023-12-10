@@ -54,12 +54,22 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 300,
             color: Colors.purple,
             alignment: Alignment.center,
-            child: AnimatedDefaultTextStyle(
-              duration: const Duration(seconds: 1),
-              style: TextStyle(
-                  fontSize: flag ? 20 : 40,
-                  color: flag ? Colors.white : Colors.yellow),
-              child: const Text('Hello World!'),
+            child: AnimatedSwitcher(
+              transitionBuilder: (child, animation) {
+                return ScaleTransition(
+                  scale: animation,
+                  child: child,
+                );
+              },
+              // 当子元素改变的时候会触发动画
+              duration: const Duration(milliseconds: 1500),
+              child: flag
+                  ? const CircularProgressIndicator()
+                  : Image.network(
+                      'https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056_1280.jpg',
+                      height: double.maxFinite,
+                      fit: BoxFit.cover,
+                    ),
             ),
           ),
         ));
