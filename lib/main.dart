@@ -36,15 +36,16 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
+  bool flag = true;
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
-      lowerBound: 0.5,
-      upperBound: 1.0,
-    )..repeat(reverse: true);
+      // lowerBound: 0.5,
+      // upperBound: 1.0,
+    );
   }
 
   @override
@@ -55,61 +56,26 @@ class _MyHomePageState extends State<MyHomePage>
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            setState(() {});
+            flag ? _controller.forward() : _controller.reverse();
+            flag = !flag;
           },
           child: const Icon(Icons.add),
         ),
         body: Center(
-          child: Column(children: [
-            const SizedBox(
-              height: 40,
-            ),
-            SlideTransition(
-              position: _controller.drive(
-                  Tween(begin: const Offset(0, 0), end: const Offset(0, 4))
-                      .chain(CurveTween(
-                          // curve: Curves.easeInExpo
-                          curve: const Interval(0.1, 0.8)))),
-              child: Container(
-                width: 100,
-                height: 100,
-                color: Colors.red,
+          child: Stack(
+            children: [
+              ScaleTransition(
+                scale: _controller.drive(Tween(begin: 0.0, end: 1.0)
+                    .chain(CurveTween(curve: const Interval(0.5, 1.0)))),
+                child: const Icon(Icons.close, size: 40),
               ),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                    onPressed: () {
-                      _controller.forward(); // 播放一次
-                    },
-                    child: const Text('forward')),
-                ElevatedButton(
-                    onPressed: () {
-                      _controller.reverse(); // 倒序播放一次
-                    },
-                    child: const Text('reverse')),
-                ElevatedButton(
-                    onPressed: () {
-                      _controller.stop(); // 停止
-                    },
-                    child: const Text('stop')),
-                ElevatedButton(
-                    onPressed: () {
-                      _controller.reset(); //  重置
-                    },
-                    child: const Text('reset')),
-                ElevatedButton(
-                    onPressed: () {
-                      _controller.repeat(); //  重复播放
-                    },
-                    child: const Text('repeat')),
-              ],
-            )
-          ]),
+              ScaleTransition(
+                scale: _controller.drive(Tween(begin: 1.0, end: 0.0)
+                    .chain(CurveTween(curve: const Interval(0.0, 0.5)))),
+                child: const Icon(Icons.search, size: 40),
+              )
+            ],
+          ),
         ));
   }
 }
