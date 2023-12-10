@@ -48,25 +48,14 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           child: const Icon(Icons.add),
         ),
-        body: Stack(
-          children: [
-            ListView(
-              children: const [ListTile(title: Text('我是一个列表'))],
-            ),
-            Positioned(
-                left: 0,
-                top: 0,
-                bottom: 0,
-                child: AnimatedContainer(
-                  transform: flag
-                      ? Matrix4.translationValues(-200, 0, 0)
-                      : Matrix4.translationValues(0, 0, 0),
-                  duration: const Duration(milliseconds: 600),
-                  width: 200,
-                  height: double.infinity,
-                  color: flag ? Colors.red : Colors.blue,
-                ))
-          ],
-        ));
+        body: AnimatedPadding(
+            curve: Curves.bounceIn,
+            duration: const Duration(seconds: 1),
+            padding: EdgeInsets.fromLTRB(10, flag ? 10 : 500, 0, 0),
+            child: Container(
+              width: 100,
+              height: 100,
+              color: flag ? Colors.red : Colors.yellow,
+            )));
   }
 }
