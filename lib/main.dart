@@ -1,18 +1,17 @@
-/// AnimatedContainer
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Myapp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class Myapp extends StatefulWidget {
+  const Myapp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<Myapp> createState() => _MyappState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,46 +31,75 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  bool flag = true;
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this, // 让程序和手机的刷新频率统一
+      duration: const Duration(seconds: 1),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Demo'),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _controller.forward();
+          _controller.reverse();
+          _controller.repeat();
+          _controller.repeat(reverse: true);
+          _controller.reset();
+          _controller.dispose();
+        },
+        child: const Icon(Icons.add),
+      ),
+      appBar: AppBar(
+        title: const Text('Flutter Demo'),
+      ),
+      body: Center(
+          child: Column(children: [
+        const SizedBox(
+          height: 40,
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              flag = !flag;
-            });
-          },
-          child: const Icon(Icons.add),
+        RotationTransition(turns: _controller, child: const FlutterLogo()),
+        const SizedBox(
+          height: 40,
         ),
-        body: Center(
-          child: Container(
-            width: 300,
-            height: 300,
-            color: Colors.purple,
-            alignment: Alignment.center,
-            child: AnimatedSwitcher(
-              transitionBuilder: (child, animation) {
-                return ScaleTransition(
-                  scale: animation,
-                  child: child,
-                );
-              },
-              // 当子元素改变的时候会触发动画
-              duration: const Duration(milliseconds: 1500),
-              child: flag
-                  ? const CircularProgressIndicator()
-                  : Image.network(
-                      'https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056_1280.jpg',
-                      height: double.maxFinite,
-                      fit: BoxFit.cover,
-                    ),
-            ),
-          ),
-        ));
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  _controller.forward(); // 播放一次
+                },
+                child: const Text('forward')),
+            ElevatedButton(
+                onPressed: () {
+                  _controller.reverse(); // 倒序播放一次
+                },
+                child: const Text('reverse')),
+            ElevatedButton(
+                onPressed: () {
+                  _controller.stop(); // 停止
+                },
+                child: const Text('stop')),
+            ElevatedButton(
+                onPressed: () {
+                  _controller.reset(); //  重置
+                },
+                child: const Text('reset')),
+            ElevatedButton(
+                onPressed: () {
+                  _controller.repeat(); //  重复播放
+                },
+                child: const Text('repeat')),
+          ],
+        )
+      ])),
+    );
   }
 }
