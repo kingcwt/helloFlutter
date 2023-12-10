@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage>
             SlidingBox(
               color: Colors.blue[700],
               controller: _controller,
-              curve: const Interval(0.6, 0.8),
+              curve: const Interval(0.4, 0.6),
             ),
             SlidingBox(
               color: Colors.blue[900],
