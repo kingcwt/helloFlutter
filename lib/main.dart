@@ -1,3 +1,6 @@
+// AnimatedList 动画列表 删除和增加 FadeTransition，ScaleTransition
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,52 +35,66 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> list = [];
-  final GlobalKey _globalKey1 = GlobalKey();
-  final GlobalKey _globalKey2 = GlobalKey();
-  final GlobalKey _globalKey3 = GlobalKey();
+  List<String> list = ['第一天', '第二天'];
+  bool flag = true;
+  final globalKey = GlobalKey<AnimatedListState>();
 
-  @override
-  void initState() {
-    super.initState();
+  Widget _buildItem(int index) {
+    return ListTile(
+      title: Text(list[index]),
+      trailing: IconButton(
+        icon: const Icon(Icons.delete),
+        onPressed: () {
+          // 执行删除元素
+          _deleteItem(index);
+        },
+      ),
+    );
+  }
 
-    list = [
-      Box(key: _globalKey1, color: Colors.red),
-      Box(key: _globalKey2, color: Colors.yellow),
-      Box(key: _globalKey3, color: Colors.blue),
-    ];
+  void _deleteItem(index) {
+    if (flag == true) {
+      flag = false;
+      globalKey.currentState?.removeItem(index, (context, animation) {
+        var removeItem = _buildItem(index);
+        list.removeAt(index); // 数组中删除数据
+        // animation 从1 - 0
+        return ScaleTransition(
+          // opacity: animation,
+          scale: animation,
+          child: removeItem, // 删除的时候执行动画的元素
+        );
+      });
+
+      Timer.periodic(const Duration(milliseconds: 500), (timer) {
+        flag = true;
+        timer.cancel();
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {
-            var boxState = _globalKey1.currentState as _BoxState;
-            // 获取子widget的状态属性
-            print(boxState._count);
-            setState(() {
-              boxState._count++;
-            });
-            // 获取子widget状态的方法
-            boxState.run();
-
-            // 获取子widget (了解)
-            var boxWidget = _globalKey1.currentWidget as Box;
-            print(boxWidget.color);
-
-            // 获取子组件渲染的属性 (了解)
-            var renderBox =
-                _globalKey1.currentContext!.findRenderObject() as RenderBox;
-            print(renderBox.size);
-          },
-        ),
         appBar: AppBar(
           title: const Text('Flutter Demo Home Page'),
         ),
-        body: Center(
-          child: Box(key: _globalKey1, color: Colors.red),
+        floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              list.add('第${list.length + 1}天');
+              globalKey.currentState?.insertItem(list.length - 1);
+            }),
+        body: AnimatedList(
+          key: globalKey,
+          initialItemCount: list.length,
+          itemBuilder: (context, index, animation) {
+            return FadeTransition(
+                // animation 从0 - 1
+                opacity: animation,
+                // scale: animation,
+                child: _buildItem(index));
+          },
         ));
   }
 }
