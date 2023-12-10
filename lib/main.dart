@@ -64,9 +64,12 @@ class _MyHomePageState extends State<MyHomePage>
             const SizedBox(
               height: 40,
             ),
-            ScaleTransition(
-              scale: _controller
-                  .drive(Tween(begin: 0.5, end: 1.2)), // Tween配置 初始化 从0.5 到 1.2
+            SlideTransition(
+              position: _controller.drive(
+                  Tween(begin: const Offset(0, 0), end: const Offset(0, 4))
+                      .chain(CurveTween(
+                          // curve: Curves.easeInExpo
+                          curve: const Interval(0.1, 0.8)))),
               child: Container(
                 width: 100,
                 height: 100,
