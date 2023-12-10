@@ -48,14 +48,16 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           child: const Icon(Icons.add),
         ),
-        body: AnimatedPadding(
-            curve: Curves.bounceIn,
-            duration: const Duration(seconds: 1),
-            padding: EdgeInsets.fromLTRB(10, flag ? 10 : 500, 0, 0),
-            child: Container(
-              width: 100,
-              height: 100,
-              color: flag ? Colors.red : Colors.yellow,
-            )));
+        body: Center(
+          child: AnimatedOpacity(
+              opacity: flag ? 1.0 : 0.2,
+              // curve: Curves.bounceIn,
+              duration: const Duration(seconds: 1),
+              child: Container(
+                width: 100,
+                height: 100,
+                color: flag ? Colors.red : Colors.yellow,
+              )),
+        ));
   }
 }
