@@ -39,6 +39,8 @@ class _MyHomePageState extends State<MyHomePage>
     super.initState();
     _controller = AnimationController(
       vsync: this, // 让程序和手机的刷新频率统一
+      lowerBound: 0.5,
+      upperBound: 1.0,
       duration: const Duration(seconds: 1),
     );
   }
@@ -65,7 +67,10 @@ class _MyHomePageState extends State<MyHomePage>
         const SizedBox(
           height: 40,
         ),
-        RotationTransition(turns: _controller, child: const FlutterLogo()),
+        FadeTransition(
+            opacity: _controller,
+            // turns: _controller,
+            child: const FlutterLogo()),
         const SizedBox(
           height: 40,
         ),
