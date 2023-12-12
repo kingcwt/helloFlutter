@@ -20,13 +20,15 @@ class _HeroPageState extends State<HeroPage> {
           title: Text(widget.arguments['title']),
         ),
         body: Center(
-          child: AspectRatio(
-            aspectRatio: 16 / 9,
-            child: Hero(
+          child: Container(
+            margin: const EdgeInsets.all(10.0), // 调整边距
+            child: AspectRatio(
+              aspectRatio: 16 / 10,
+              child: Hero(
                 tag: widget.arguments['heroTag'],
-                child: Image.network(
-                  widget.arguments['imageUrl'],
-                )),
+                child: Image.network(widget.arguments['imageUrl']),
+              ),
+            ),
           ),
         ),
       ),
