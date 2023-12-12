@@ -13,6 +13,7 @@ import '../pages/tabs.dart';
 import '../pages/form.dart';
 import '../pages/news.dart';
 import '../pages/search.dart';
+import '../pages/hero.dart';
 
 //MaterialPageRoute => CupertinoPageRoute 可以统一在安卓设备使用ios左右滑动的效果
 // import 'package:flutter/cupertino.dart';
@@ -32,7 +33,10 @@ final Map routes = {
   '/pageviewbuilder': (context) => const PageViewBuilder(),
   '/pageviewfullpage': (context) => const PageViewFullPage(),
   '/pageviewswiper': (context) => const PageViewSwiper(),
-  '/pageviewkeepalive': (context) => const PageViewKeepAlive()
+  '/pageviewkeepalive': (context) => const PageViewKeepAlive(),
+  '/hero': (context, {arguments}) => HeroPage(
+        arguments: arguments,
+      )
 };
 
 // 2 配置onGenerateRoute 固定写法 这个方法相当于中间件
