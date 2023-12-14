@@ -104,6 +104,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "photo_view",
+      "rootUri": "file:///Users/cuihongran/.pub-cache/hosted/pub.dev/photo_view-0.14.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/cuihongran/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -164,7 +170,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-12-08T08:48:59.730038Z",
+  "generated": "2023-12-14T10:11:35.864512Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }

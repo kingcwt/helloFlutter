@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class HeroPage extends StatefulWidget {
   final Map arguments;
@@ -15,23 +16,29 @@ class _HeroPageState extends State<HeroPage> {
       onTap: () {
         Navigator.pop(context);
       },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.arguments['title']),
-        ),
-        body: Center(
-          child: Container(
-            margin: const EdgeInsets.all(10.0), // 调整边距
-            child: AspectRatio(
-              aspectRatio: 16 / 10,
-              child: Hero(
-                tag: widget.arguments['heroTag'],
-                child: Image.network(widget.arguments['imageUrl']),
+      child: Hero(
+          tag: widget.arguments['heroTag'],
+          child: Scaffold(
+            backgroundColor: Colors.black,
+            // appBar: AppBar(
+            //   title: Text(widget.arguments['title']),
+            // ),
+            body: Center(
+              child: Container(
+                margin: const EdgeInsets.all(10.0), // 调整边距
+                child: AspectRatio(
+                    aspectRatio: 16 / 10,
+                    child: PhotoView(
+                      imageProvider: NetworkImage(widget.arguments['imageUrl']),
+                    )
+                    // Hero(
+                    //   tag: widget.arguments['heroTag'],
+                    //   child: Image.network(widget.arguments['imageUrl']),
+                    // ),
+                    ),
               ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }
