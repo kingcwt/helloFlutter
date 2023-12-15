@@ -74,6 +74,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "get",
+      "rootUri": "file:///Users/cuihongran/.pub-cache/hosted/pub.dev/get-4.6.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///Users/cuihongran/.pub-cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
@@ -170,7 +176,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-12-14T10:11:35.864512Z",
+  "generated": "2023-12-15T03:47:52.348393Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }
