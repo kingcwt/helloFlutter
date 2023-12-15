@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter2/controllers/counter.dart';
+import 'package:flutter2/pages/binding/binding.dart';
 import 'package:flutter2/pages/detail.dart';
 import 'package:get/get.dart';
 import './pages/Animal.dart';
@@ -11,6 +12,7 @@ void main() {
       primarySwatch: Colors.blue,
     ),
     home: MyHomePage(),
+    initialBinding: AllControllerBinding(), // 全局初始化controller
     getPages: [
       GetPage(
         name: '/detail',
@@ -29,11 +31,11 @@ class MyHomePage extends StatelessWidget {
 
   MyHomePage({super.key});
 
-  // 创建控制器实例
-  CounterController counterController = Get.put(CounterController());
-
   @override
   Widget build(BuildContext context) {
+    // 创建控制器实例
+    CounterController counterController = Get.find<CounterController>();
+    print(counterController.count);
     return Scaffold(
         appBar: AppBar(
           title: const Text('首页'),
