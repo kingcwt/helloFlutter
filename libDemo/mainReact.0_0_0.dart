@@ -1,6 +1,6 @@
 // router 导航 swiper 缓存 入口文件
 import 'package:flutter/material.dart';
-import '../lib/routes/routes.dart';
+import 'package:flutter2/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());

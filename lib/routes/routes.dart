@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter2/middleware/getFormMiddleware.dart';
 import 'package:flutter2/pages/dialog.dart';
+import 'package:flutter2/pages/getForm.dart';
 import 'package:flutter2/pages/login.dart';
 import 'package:flutter2/pages/pageViewBuilder.dart';
 import 'package:flutter2/pages/pageViewFullPage.dart';
@@ -9,11 +11,26 @@ import 'package:flutter2/pages/pageview.dart';
 import 'package:flutter2/pages/registerFirst.dart';
 import 'package:flutter2/pages/registerSecond.dart';
 import 'package:flutter2/pages/registerThird.dart';
+import 'package:get/get.dart';
 import '../pages/tabs.dart';
 import '../pages/form.dart';
 import '../pages/news.dart';
 import '../pages/search.dart';
 import '../pages/hero.dart';
+
+//GetX routers 抽离
+class AppPage {
+  static final routes = [
+    GetPage(name: '/', page: () => const Tabs()),
+    GetPage(name: '/search', page: () => const SearchPage()),
+    GetPage(
+        name: '/getform',
+        page: () => const GetFormPage(),
+        middlewares: [GetFormMiddleware()]
+        // transition: Transition.fadeIn
+        ),
+  ];
+}
 
 //MaterialPageRoute => CupertinoPageRoute 可以统一在安卓设备使用ios左右滑动的效果
 // import 'package:flutter/cupertino.dart';

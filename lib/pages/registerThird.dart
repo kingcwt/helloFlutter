@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter2/pages/tabs.dart';
 import 'package:flutter2/pages/tabs/message.dart';
+import 'package:get/route_manager.dart';
 import '../pages/tabs/person.dart';
 
 class RegisterThirdPage extends StatefulWidget {
@@ -25,10 +26,13 @@ class _RegisterThirdPageState extends State<RegisterThirdPage> {
                 // Navigator.of(context).pop();
 
                 // 返回根路由
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const Tabs(index: 4)),
-                    (route) => false);
+                // Navigator.of(context).pushAndRemoveUntil(
+                //     MaterialPageRoute(
+                //         builder: (context) => const Tabs(index: 4)),
+                //     (route) => false);
+
+                // Getx 返回根路由只要一行代码
+                Get.offAll(const Tabs(index: 4));
               },
               child: const Text('完成注册'),
             )

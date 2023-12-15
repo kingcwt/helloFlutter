@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter2/pages/registerFirst.dart';
+import 'package:get/get.dart';
 
 class PersonPage extends StatefulWidget {
   const PersonPage({super.key});
@@ -14,12 +16,16 @@ class _PersonPageState extends State<PersonPage> {
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/login');
+              // Navigator.pushNamed(context, '/login');
+              Get.toNamed('/login');
             },
             child: const Text('登录')),
         ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/registerFirst');
+              // Navigator.pushNamed(context, '/registerFirst');
+
+              // off 就是调整之后 上面没有返回的箭头 跳转指定页面 没有返回按钮
+              Get.off(const RegisterFirstPage());
             },
             child: const Text('注册')),
         ElevatedButton(
