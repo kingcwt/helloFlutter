@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter2/pages/tabs.dart';
-import 'package:flutter2/pages/tabs/message.dart';
 import 'package:get/route_manager.dart';
-import '../pages/tabs/person.dart';
 
 class RegisterThirdPage extends StatefulWidget {
   const RegisterThirdPage({super.key});

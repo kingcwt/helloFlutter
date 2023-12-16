@@ -1,7 +1,6 @@
 /// flutter Icon
 /// 自定义图标
 import 'package:flutter/material.dart';
-import 'package:flutter2/myFont.dart';
 
 void main() {
   runApp(MaterialApp(

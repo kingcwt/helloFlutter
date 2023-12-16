@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter2/data.dart';
 
 /// 动态数据渲染
 void main() {
@@ -9,7 +8,7 @@ void main() {
         appBar: AppBar(
           title: const Text('Flutter Demo'),
         ),
-        body: MyPageBody(),
+        body: const MyPageBody(),
       )));
 }
 

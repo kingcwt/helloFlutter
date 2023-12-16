@@ -1,7 +1,5 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter2/data.dart';
 
 /// 右侧固定宽高 左侧自适应
 void main() {
@@ -11,7 +9,7 @@ void main() {
         appBar: AppBar(
           title: const Text('Flutter Demo'),
         ),
-        body: MyPageBody(),
+        body: const MyPageBody(),
       )));
 }
 

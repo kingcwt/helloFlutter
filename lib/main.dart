@@ -54,7 +54,7 @@ class MyHomePage extends StatelessWidget {
                     style: const TextStyle(fontSize: 30),
                   )),
               Obx(() => Text(
-                    '${username.value}',
+                    username.value,
                   )),
               const Divider(),
               Obx(() => Text(

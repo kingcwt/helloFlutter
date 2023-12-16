@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   runApp(MaterialApp(
     theme: ThemeData(primarySwatch: Colors.blue),
     home: Scaffold(
       appBar: AppBar(title: const Text('Material App Bar')),
-      body: MyBodyContainer(),
+      body: const MyBodyContainer(),
     ),
   ));
 }
